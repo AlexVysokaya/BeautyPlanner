@@ -1,0 +1,32 @@
+@keyframes backgroundLogo {
+  0% { background-color: #176093;}
+  50% { background-color: #032A46;}
+  100% { background-color: #176093;}
+}
+
+.header {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  height: 65px;
+  width: 100%;
+  background-color: #176093;
+  /* 224 */
+}
+
+.header_logo {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 65px;
+  height: 65px;
+}
+
+.active_logo {
+  animation: backgroundLogo 1s;
+}
+
+.header_logo img {
+  width: 50px;
+  height: 50px;
+}

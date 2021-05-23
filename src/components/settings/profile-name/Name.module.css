@@ -1,0 +1,17 @@
+.profile_name {
+  margin-bottom: 10px;
+  font-size: x-large;
+  font-weight: 600;
+}
+
+.profile_input_name input {
+  width: 250px;
+  height: 25px;
+	font-size: 15px;
+	padding: 5px 0 5px 10px;
+	border: 1px solid #001828;
+	background: white;
+	border-radius: 8px;
+  text-align: center;
+  color: #001828;
+}

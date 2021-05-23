@@ -1,0 +1,11 @@
+.louding_wrapper {
+  margin: 0 auto;
+  padding-top: 15px;
+  width: 200px;
+  height: 200px;
+}
+
+.louding_wrapper img {
+  width: 100%;
+  height: 100%;
+}

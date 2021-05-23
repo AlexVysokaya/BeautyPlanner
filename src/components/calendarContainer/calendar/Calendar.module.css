@@ -1,0 +1,42 @@
+.calendar_wrapper {
+  margin: 0 auto;
+  margin-top: 15px;
+  max-width: 400px;
+}
+
+.calendar_item {
+  flex: 1;
+  /* width: 18px;
+  height: 18px; */
+  text-align: center;
+  border: 1px solid white;
+}
+
+.calender_week {
+  display: flex;
+  /* flex: 1; */
+  /* flex-direction: row; */
+  justify-content: space-around;
+  align-items: center;
+  padding: 15px;
+}
+
+.calendar_weekRow {
+  background-color: #6CB2E4;
+}
+
+.calendar_weekend {
+  color: #176093;
+}
+
+.calendar_activeDay {
+  border-radius: 10px;
+  background-color: #176093;
+  color: white;
+}
+
+.calendar_day:hover, .calendar_day:active  {
+  border-radius: 10px;
+  background-color: #6CB2E4;
+  color: #001828;
+}
