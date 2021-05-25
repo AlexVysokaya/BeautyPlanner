@@ -1,5 +1,5 @@
 const ADD_NEW = 'ADD-NEW';
-const DELETE_ELEMENT = 'DELETE-ELEMENT';
+const DELETE_ELEMENT_COSM = 'DELETE-ELEMENT-COSM';
 
 const initialState = { //у каждого элемента косметички должен быть id
   body: {
@@ -99,9 +99,9 @@ const initialState = { //у каждого элемента косметички
 
 const cosmeticsReducer = (state = initialState, action) => {
   switch (action.type) {
-    case DELETE_ELEMENT: {
-      let newList = state[action.category[1]].list[action.category[2]].list.filter(elem => elem.id !== action.id);
-      let copyState = {
+    case DELETE_ELEMENT_COSM: {
+      const newList = state[action.category[1]].list[action.category[2]].list.filter(elem => elem.id !== action.id);
+      return {
         ...state,
         [action.category[1]]: {
           ...state[action.category[1]],
@@ -114,7 +114,6 @@ const cosmeticsReducer = (state = initialState, action) => {
           }
         }
       };
-      return copyState;
     }
 
     case ADD_NEW: {
@@ -147,7 +146,7 @@ export const addNew = (elem, category) => {
 }
 
 export const deleteElemCosmetics = (id, category) => {
-  return { type: DELETE_ELEMENT, id, category }
+  return { type: DELETE_ELEMENT_COSM, id, category }
 }
 
 

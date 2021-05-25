@@ -4,7 +4,7 @@ import style from './App.module.css';
 import CalendarContainer from './components/calendarContainer/CalendarContainer';
 import Cosmetics from './components/cosmetics/Cosmetics';
 import Daily from './components/daily/Daily';
-import { Header } from './components/header/Header';
+import Header from './components/header/Header';
 import Login from './components/login/Login';
 import Registration from './components/registration/Registration';
 import Setting from './components/settings/Setting';

@@ -11,7 +11,7 @@ const Form = ({ handleSubmit }) => {
         component={'input'} />
     </div>
     <div className={style.wrapper_field}>
-      <Field placeholder={'gароль'}
+      <Field placeholder={'Пароль'}
         name={'password'}
         component={'input'}
         type={'password'} />

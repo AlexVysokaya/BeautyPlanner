@@ -3,12 +3,12 @@ import del from '../../img/delete.svg';
 import AddElement from './button/addElement';
 import style from './Daily.module.css';
 
-const List = ({ list, time }) => {
+const List = ({ list, time, deleteElemDaily, addElemDaily }) => {
 
   let deleteElem = (id, time) => {
-    console.log(id, time);
+    deleteElemDaily(id, time)
   }
-  
+
 
   return <div className={style.part_day}>
     {
@@ -22,7 +22,7 @@ const List = ({ list, time }) => {
       })
     }
     <div>
-      <AddElement/>
+      <AddElement time={time} addElemDaily={addElemDaily}/>
     </div>
   </div>
 }

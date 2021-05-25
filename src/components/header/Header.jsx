@@ -6,11 +6,16 @@ import cosmetic from '../../img/cosmetics.svg';
 import setting from '../../img/profile.svg';
 import { NavLink } from 'react-router-dom';
 import { getDateParametrs } from '../../function/getDateParametrs';
+import { setDatePlan } from '../../redux/dailyReducer';
+import { connect } from 'react-redux';
 
 
-export const Header = () => {
+const Header = () => {
 
-  const {year, month, day} = getDateParametrs(new Date());
+  // const {year, month, day} = getDateParametrs(new Date());
+  const setTodayDate = () => {
+    setDatePlan( new Date() );
+  }
 
   return (
     <div className={style.header}>
@@ -19,7 +24,7 @@ export const Header = () => {
           <img src={calendar} />
         </div>
       </NavLink>
-      <NavLink to={`/daily?year=${year}&month=${month}&day=${day}`} activeClassName={style.active_logo}>
+      <NavLink to={`/daily`} activeClassName={style.active_logo} onClick={()=>{setTodayDate()}}>
         <div className={style.header_logo}>
           <img src={daily} />
         </div>
@@ -37,3 +42,9 @@ export const Header = () => {
     </div>
   )
 }
+
+const mapStateToProps = (state) => {
+  return {}
+}
+
+export default connect (mapStateToProps,{setDatePlan})(Header)
