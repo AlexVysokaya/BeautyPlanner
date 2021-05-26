@@ -5,7 +5,7 @@ import { connect } from 'react-redux';
 import Catalog from './Catalog';
 import Category from './Category';
 import { addNew, deleteElemCosmetics } from '../../redux/cosmeticsReducer';
-import AddNew from './addNew/AddNew';
+import AddNewCosm from './addNewCosm/AddNewCosm';
 import { createBrowserHistory } from 'history';
 
 const Cosmetics = ({ state, addNew, deleteElemCosmetics, ...props }) => {
@@ -24,7 +24,7 @@ const Cosmetics = ({ state, addNew, deleteElemCosmetics, ...props }) => {
           <Route exact path={`${url}/${key}`} render={() => <Catalog list={parcel[key].list} deleteElemCosmetics = {deleteElemCosmetics}/>} />
         )
         arrRoute.push(
-          <Route exact path={`${url}/${key}/new`} render={() => <AddNew history={history} addNew = {addNew}/>} />
+          <Route exact path={`${url}/${key}/new`} render={() => <AddNewCosm history={history} addNew = {addNew}/>} />
         )
       }
     }

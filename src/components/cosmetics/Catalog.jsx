@@ -1,9 +1,9 @@
 import React from 'react';
 import style from './Cosmetics.module.css';
 import del from '../../img/delete.svg';
-import Comeback from './button/comeback/comeback';
-import AddElem from './button/addElem/addElem';
 import { createBrowserHistory } from 'history';
+import AddElem from '../button/addElem/addElem';
+import Comeback from '../button/comeback/comeback';
 
 const Catalog = ({ list, deleteElemCosmetics }) => {
 
@@ -19,12 +19,14 @@ const Catalog = ({ list, deleteElemCosmetics }) => {
     <div className={style.button_back}>
       <Comeback history={history} />
     </div>
-    <AddElem history={history}/>
+    <div className={style.button_add}>
+      <AddElem history={history} />
+    </div>
     {
       list.map(elem => {
         return <div key={elem.id} className={`${style.button_box} ${style.element}`}>
           <span>{elem.name}</span>
-          <div className={style.button_delete} onClick = {() => deleteElem(elem.id)}>
+          <div className={style.button_delete} onClick={() => deleteElem(elem.id)}>
             <img src={del} />
           </div>
         </div>

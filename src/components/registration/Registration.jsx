@@ -3,6 +3,7 @@ import React from 'react';
 import { Field, reduxForm } from 'redux-form';
 import style from './Registration.module.css';
 import back from '../../img/back.svg';
+import Comeback from '../button/comeback/comeback';
 
 
 const Form = ({ handleSubmit }) => {
@@ -49,8 +50,9 @@ const Registration = () => {
       <RegForm onSubmit={onSubmit} />
     </div>
     <div className={style.wrapper_button}>
+      {/* <Comeback history = {history}/> */}
       <button className={style.button_back} onClick={() => { history.back() }}>
-        <img src={back} className={style.button_logo} />
+        {/* <img src={back} className={style.button_logo} /> */}
         <span>Назад</span>
       </button>
     </div>

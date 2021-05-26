@@ -1,8 +1,8 @@
 import { createBrowserHistory } from 'history';
 import React from 'react';
 import { Field, reduxForm } from 'redux-form';
-import Comeback from '../button/comeback/comeback';
-import style from './AddNew.module.css';
+import Comeback from '../../button/comeback/comeback';
+import style from './AddNewCosm.module.css';
 
 const Form = ({handleSubmit}) => {
   return <form onSubmit={handleSubmit}>
@@ -21,7 +21,7 @@ const AddNewForm = reduxForm({
   form: 'addNewInCosmedics',
 })(Form);
 
-const AddNew = ({ addNew }) => {
+const AddNewCosm = ({ addNew }) => {
 
   let history = createBrowserHistory();
 
@@ -45,4 +45,4 @@ const AddNew = ({ addNew }) => {
 
 }
 
-export default AddNew;
+export default AddNewCosm;

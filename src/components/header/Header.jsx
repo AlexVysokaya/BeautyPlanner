@@ -10,7 +10,7 @@ import { setDatePlan } from '../../redux/dailyReducer';
 import { connect } from 'react-redux';
 
 
-const Header = () => {
+const Header = ({setDatePlan}) => {
 
   // const {year, month, day} = getDateParametrs(new Date());
   const setTodayDate = () => {

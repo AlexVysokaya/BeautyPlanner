@@ -1,8 +1,8 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
 import style from './Cosmetics.module.css';
-import Comeback from './button/comeback/comeback';
 import { createBrowserHistory } from 'history';
+import Comeback from '../button/comeback/comeback';
 
 const Category = ({ list }) => {
 

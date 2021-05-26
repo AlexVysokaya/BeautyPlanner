@@ -1,6 +1,7 @@
+import { createBrowserHistory } from 'history';
 import React from 'react';
 import del from '../../img/delete.svg';
-import AddElement from './button/addElement';
+import AddElem from '../button/addElem/addElem';
 import style from './Daily.module.css';
 
 const List = ({ list, time, deleteElemDaily, addElemDaily }) => {
@@ -9,6 +10,7 @@ const List = ({ list, time, deleteElemDaily, addElemDaily }) => {
     deleteElemDaily(id, time)
   }
 
+  let history = createBrowserHistory();
 
   return <div className={style.part_day}>
     {
@@ -21,8 +23,8 @@ const List = ({ list, time, deleteElemDaily, addElemDaily }) => {
         </div>
       })
     }
-    <div>
-      <AddElement time={time} addElemDaily={addElemDaily}/>
+    <div className={style.button_add}>
+      <AddElem history={history}/>
     </div>
   </div>
 }

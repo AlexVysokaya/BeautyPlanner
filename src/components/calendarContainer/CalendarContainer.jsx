@@ -52,7 +52,7 @@ class CalendarContainer extends React.Component {
             <div className={style.button_forward}></div>
           </div>
         </div>
-        <Calendar matrix={matrix} year={year} month={month} day={day} setDatePlan={setDatePlan}/>
+        <Calendar matrix={matrix} year={year} month={month} day={day} setDatePlan={this.props.setDatePlan}/>
       </div>
     )
   }

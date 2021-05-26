@@ -4,7 +4,7 @@ const DELETE_ELEMENT_DAY = 'DELETE-ELEMENT-DAY';
 const ADD_ELEMENT_DAY = 'ADD-ELEMENT-DAY';
 
 const initialState = {
-  date: new Date(2021, 5, 23), //дата, на которую сделан запрос
+  date: null, //дата, на которую сделан запрос
   plan: {
     morning: [
       { id: 10, name: 'Пенка для умывания', photo: null },
@@ -25,12 +25,9 @@ const initialState = {
 
 const dailyReducer = (state = initialState, action) => {
 
-  console.log(action.type);
-
   switch (action.type) {
 
     case SET_DATA: {
-      console.log('попал в reduce установки даты');
       return {
         ...state,
         date: action.date
@@ -71,7 +68,6 @@ export const deleteElemDaily = (id, time) => {
 
 export const setDatePlan = (date) => {
   //загрузка плана по дате
-  console.log('попал в action установки даты');
   return { type: SET_DATA , date}
 }
 
