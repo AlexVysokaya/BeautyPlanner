@@ -49,12 +49,12 @@ const Registration = () => {
     <div className={style.wrapper_form}>
       <RegForm onSubmit={onSubmit} />
     </div>
-    <div className={style.wrapper_button}>
-      {/* <Comeback history = {history}/> */}
-      <button className={style.button_back} onClick={() => { history.back() }}>
-        {/* <img src={back} className={style.button_logo} /> */}
+    <div className={`${style.wrapper_button} ${style.wrapper_button_back}`}>
+      <Comeback history = {history}/>
+      {/* <button className={style.button_back} onClick={() => { history.back() }}>
+        <img src={back} className={style.button_logo} />
         <span>Назад</span>
-      </button>
+      </button>  */}
     </div>
   </div>
 }
