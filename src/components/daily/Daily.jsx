@@ -60,4 +60,4 @@ const mapStateToProps = (state) => {
   }
 }
 
-export default connect(mapStateToProps, {deleteElemDaily, setDatePlan, addElemDaily})(Daily);
+export default connect(mapStateToProps, {deleteElemDaily, setDatePlan})(Daily);

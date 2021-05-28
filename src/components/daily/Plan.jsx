@@ -2,7 +2,7 @@ import React from 'react';
 import List from './List';
 import style from './Daily.module.css';
 
-const Plan = ({plan, deleteElemDaily, addElemDaily}) => {
+const Plan = ({plan, deleteElemDaily}) => {
 
   let arrPart = [];
   let dayTime = {
@@ -14,7 +14,7 @@ const Plan = ({plan, deleteElemDaily, addElemDaily}) => {
   for (let key in plan) {
     arrPart.push( <div className={style.daily}>
       <h3>{dayTime[key]}</h3>
-      <List list={plan[key]} time={key} deleteElemDaily={deleteElemDaily} addElemDaily={addElemDaily} />
+      <List list={plan[key]} time={key} deleteElemDaily={deleteElemDaily} />
     </div> )
   }
 

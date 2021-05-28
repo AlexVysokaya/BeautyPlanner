@@ -4,7 +4,7 @@ import del from '../../img/delete.svg';
 import AddElem from '../button/addElem/addElem';
 import style from './Daily.module.css';
 
-const List = ({ list, time, deleteElemDaily, addElemDaily }) => {
+const List = ({ list, time, deleteElemDaily}) => {
 
   let deleteElem = (id, time) => {
     deleteElemDaily(id, time)
@@ -24,7 +24,7 @@ const List = ({ list, time, deleteElemDaily, addElemDaily }) => {
       })
     }
     <div className={style.button_add}>
-      <AddElem history={history}/>
+      <AddElem history={history} time={time}/>
     </div>
   </div>
 }
