@@ -1,6 +1,7 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
 import { Field, reduxForm } from 'redux-form';
+import { authorization, cosmeticBag } from '../../api/api';
 import style from './Login.module.css';
 
 const Form = ({ handleSubmit }) => {
@@ -28,8 +29,16 @@ const LogForm = reduxForm({
 
 const Login = () => {
 
-  let onSubmit = (formData) => {
+  let onSubmit = async (formData) => {
     // запрос на авторизацию
+    const login = formData.login;
+    const password = formData.password;
+    // cosmeticBag.getBag().then(response => console.log(response))
+    let response = await authorization.login(login, password);
+    if (response.status === 200) {
+        console.log(response);
+        cosmeticBag.getBag().then(response => console.log(response))
+    }
   }
 
   return <div className={style.wrapper}>

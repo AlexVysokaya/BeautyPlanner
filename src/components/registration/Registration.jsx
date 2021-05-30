@@ -4,15 +4,11 @@ import { Field, reduxForm } from 'redux-form';
 import style from './Registration.module.css';
 import back from '../../img/back.svg';
 import Comeback from '../button/comeback/comeback';
+import { authorization } from '../../api/api';
 
 
 const Form = ({ handleSubmit }) => {
   return <form onSubmit={handleSubmit}>
-    <div className={style.wrapper_field}>
-      <Field placeholder={'Имя'}
-        name={'name'}
-        component={'input'} />
-    </div>
     <div className={style.wrapper_field}>
       <Field placeholder={'Логин'}
         name={'login'}
@@ -40,6 +36,9 @@ const Registration = () => {
 
   let onSubmit = (formData) => {
     // запрос на регистрацию
+    const login = formData.login;
+    const password = formData.password;
+    authorization.registration(login, password);
   }
 
   return <div className={style.wrapper}>

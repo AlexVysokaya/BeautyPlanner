@@ -1,8 +1,6 @@
 import React from 'react';
 import style from './Setting.module.css';
 import { connect } from 'react-redux';
-import Name from './profile-name/Name';
-import { setProfileName } from '../../redux/authReducer';
 import Avatar from './profile-photo/Avatar.jsx';
 import { Redirect } from 'react-router';
 
@@ -15,7 +13,6 @@ const Setting = ({ name, login, photo, setProfileName, ...props}) => {
       <div className={style.setting_wrapper}>
         <Avatar photo={photo} />
         <div className={style.profile_info}>
-          <Name name={name} setProfileName={setProfileName} />
           <div className={style.profile_login}>
             {login || 'Логин'}
           </div>
@@ -34,4 +31,4 @@ const mapStateToProps = (state) => {
   }
 }
 
-export default connect(mapStateToProps, { setProfileName })(Setting)
+export default connect(mapStateToProps, {})(Setting)

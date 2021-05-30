@@ -3,7 +3,7 @@ const SET_DATA = 'SET-DATA';
 const DELETE_ELEMENT_DAY = 'DELETE-ELEMENT-DAY';
 const ADD_ELEMENT_DAY = 'ADD-ELEMENT-DAY';
 
-const initialState = {
+const initialState = { //изменить дату на строку
   date: null, //дата, на которую сделан запрос
   plan: {
     morning: [
