@@ -41,8 +41,8 @@ export const cosmeticBag = {
 }
 
 export const calendar = {
-  getUserPlan(data) {
-    return instance.get(`/calendar/?date=${data}`)
+  getUserPlan(date) {
+    return instance.get(`/calendar/?date=${date}`)
   },
 
   // body = {

@@ -9,7 +9,7 @@ const initialState = {
   id: null,
   isAuth: false,
   // name: 'Александра',
-  login: null,
+  login: 'mimi-sloth',
   photo: null,
   // cookie: null,
 }
@@ -62,7 +62,15 @@ export const authLogoutThunk = () => async (dispatch) => {
   }
 }
 
+export const authRegistrationThunk = (login, password) => async (dispatch) => {
+  const response = await authorization.registration(login, password);
 
-
+  if (response.status === 200) {
+    // dispatch(setAuth(true, response.data.login, response.data.id ));
+    dispatch(setAuth(true));
+  } else {
+    //должна быть валидация
+  }
+}
 
 export default authReducer;

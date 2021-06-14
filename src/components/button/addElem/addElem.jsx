@@ -5,7 +5,12 @@ import { NavLink } from 'react-router-dom';
 
 const AddElem = ({ history, time }) => {
 
-  return <NavLink to={`${history.location.pathname}/new/${time}`}>
+  let newPath =`${history.location.pathname}/new`;
+  if (time) {
+    newPath += `/${time}`;
+  }
+
+  return <NavLink to={newPath}>
     <div className={style.button_add} >
       {/* <img src={logo} className={style.button_logo} /> */}
       <span>Добавить</span>

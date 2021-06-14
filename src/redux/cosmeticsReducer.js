@@ -1,5 +1,9 @@
+import { cosmeticBag } from "../api/api";
+
 const ADD_NEW = 'ADD-NEW';
 const DELETE_ELEMENT_COSM = 'DELETE-ELEMENT-COSM';
+const SET_COSMET_BAG = 'SET-COSMET-BAG';
+const EDIT_COSMET_BAG = 'EDIT-COSMET-BAG'
 
 const initialState = { //у каждого элемента косметички должен быть id
   body: {
@@ -111,8 +115,14 @@ const initialState = { //у каждого элемента косметички
   },
 }
 
+// const initialState = {
+//   count: 0,
+//   cosmetics: {},
+// };
+
 const cosmeticsReducer = (state = initialState, action) => {
   switch (action.type) {
+    //удалить
     case DELETE_ELEMENT_COSM: {
       const newList = state[action.category[1]].list[action.category[2]].list.filter(elem => elem.id !== action.id);
       return {
@@ -129,7 +139,7 @@ const cosmeticsReducer = (state = initialState, action) => {
         }
       };
     }
-
+    //удалить
     case ADD_NEW: {
       let copyState = {
         ...state,
@@ -149,16 +159,76 @@ const cosmeticsReducer = (state = initialState, action) => {
       copyState[action.category[1]].list[action.category[2]].list.push(action.elem);
       return copyState;
     }
+
+    case SET_COSMET_BAG: {
+      //надо ли глубокое копирование???
+      return {
+        ...state,
+        cosmetics: {
+        ...action.bag,
+        }
+      }
+    }
+
+    case EDIT_COSMET_BAG: {
+      return {
+        ...state,
+        count: action.count,
+        cosmetics: {
+          [action.category]: {
+            ...state[action.category],
+            list: {
+              ...state[action.category].list,
+              [action.section]: {
+                ...state[action.category].list[action.section],
+                list: [
+                  ...action.newPlan, //глубокое копирование?
+                ]
+              }
+            }
+          }
+        }
+      }
+    }
+
     default:
       return state;
   }
 }
 
-//запрос на сервер для добавления, затем меням косметичку
+const setCosmBag = (bag) => {
+  return { type: SET_COSMET_BAG, bag}
+}
+
+const editCosmBag = (category, section, newPlan, count) => {
+  return { type: EDIT_COSMET_BAG, category, section, newPlan, count}
+}
+
+export const getCosmBagThunk = () => async (dispatch) => {
+  const response = await cosmeticBag.getBag();
+
+  if (response.status === 200) {
+    dispatch(setCosmBag(response.data));
+  } else {
+    alert(response.data);
+  }
+}
+
+export const editCosmBagThunk = (category, section, state, count) => async (dispatch) => {
+  const response = await cosmeticBag.editBag({category, section, state});
+
+  if (response.status === 200) {
+    dispatch(editCosmBag(category, section, state, count))
+  } else {
+    alert(response.data)
+  }
+}
+
+//заменить
 export const addNew = (elem, category) => {
   return { type: ADD_NEW, elem, category }
 }
-
+//заменить
 export const deleteElemCosmetics = (id, category) => {
   return { type: DELETE_ELEMENT_COSM, id, category }
 }

@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { Redirect} from 'react-router';
-import { addElemDaily, deleteElemDaily, setDatePlan } from '../../redux/dailyReducer';
+import { addElemDaily, deleteElemDaily, setDate } from '../../redux/dailyReducer';
 import Download from '../Downloud/Downloud';
 import style from './Daily.module.css';
 import DateComp from './Date';
@@ -37,7 +37,8 @@ class Daily extends React.Component {
     let year = this.state.selectedDate.getFullYear();
     let month = this.state.selectedDate.getMonth();
     let day = this.state.selectedDate.getDate() + n;
-    this.props.setDatePlan( new Date(year, month, day));
+    this.props.setDate( new Date(year, month, day));
+    //запрос плана на новую дату
   }
 
   render() {
@@ -60,4 +61,4 @@ const mapStateToProps = (state) => {
   }
 }
 
-export default connect(mapStateToProps, {deleteElemDaily, setDatePlan})(Daily);
+export default connect(mapStateToProps, {deleteElemDaily, setDate})(Daily);

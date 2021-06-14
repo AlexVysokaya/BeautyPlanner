@@ -6,15 +6,16 @@ import cosmetic from '../../img/cosmetics.svg';
 import setting from '../../img/profile.svg';
 import { NavLink } from 'react-router-dom';
 import { getDateParametrs } from '../../function/getDateParametrs';
-import { setDatePlan } from '../../redux/dailyReducer';
+import { setDate } from '../../redux/dailyReducer';
 import { connect } from 'react-redux';
 
 
-const Header = ({setDatePlan}) => {
+const Header = ({setDate}) => {
 
   // const {year, month, day} = getDateParametrs(new Date());
   const setTodayDate = () => {
-    setDatePlan( new Date() );
+    setDate( new Date() );
+    //запрос плана на новый день
   }
 
   return (
@@ -47,4 +48,4 @@ const mapStateToProps = (state) => {
   return {}
 }
 
-export default connect (mapStateToProps,{setDatePlan})(Header)
+export default connect (mapStateToProps,{setDate})(Header)

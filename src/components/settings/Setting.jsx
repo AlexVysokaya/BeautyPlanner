@@ -3,9 +3,14 @@ import style from './Setting.module.css';
 import { connect } from 'react-redux';
 import Avatar from './profile-photo/Avatar.jsx';
 import { Redirect } from 'react-router';
+import { authLogoutThunk } from '../../redux/authReducer';
 
 
-const Setting = ({ name, login, photo, setProfileName, ...props}) => {
+const Setting = ({ name, login, photo, setProfileName, authLogoutThunk, ...props}) => {
+
+  const logout = () => {
+    authLogoutThunk();
+  }
 
   return (
     <div className={style.setting}>
@@ -17,7 +22,7 @@ const Setting = ({ name, login, photo, setProfileName, ...props}) => {
             {login || 'Логин'}
           </div>
         </div>
-        <button className={style.button_exit}>Выйти</button>
+        <button className={style.button_exit} onClick={logout}>Выйти</button>
       </div>
     </div>
   )
@@ -31,4 +36,4 @@ const mapStateToProps = (state) => {
   }
 }
 
-export default connect(mapStateToProps, {})(Setting)
+export default connect(mapStateToProps, {authLogoutThunk})(Setting)

@@ -34,10 +34,10 @@ const Login = () => {
     const login = formData.login;
     const password = formData.password;
     // cosmeticBag.getBag().then(response => console.log(response))
-    let response = await authorization.login(login, password);
+    let response = await authorization.login(login, password); //заменить на thunk
     if (response.status === 200) {
         console.log(response);
-        cosmeticBag.getBag().then(response => console.log(response))
+        cosmeticBag.getBag().then(response => console.log(response)) //заменить на thunk
     }
   }
 

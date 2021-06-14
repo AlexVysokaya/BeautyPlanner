@@ -1,5 +1,10 @@
+import { calendar } from "../api/api";
+
 // const SET_DATE_PLAN = 'SET-DATE-PLAN';
 const SET_DATA = 'SET-DATA';
+const SET_PLAN = 'SET-PLAN';
+const EDIT_PLAN = 'EDIT-PLAN';
+//
 const DELETE_ELEMENT_DAY = 'DELETE-ELEMENT-DAY';
 const ADD_ELEMENT_DAY = 'ADD-ELEMENT-DAY';
 
@@ -23,6 +28,16 @@ const initialState = { //изменить дату на строку
   }
 }
 
+// const initialState = { //изменить дату на строку
+//   date: null, //дата, на которую сделан запрос
+//   // date: '', //изменить везде на строку
+//   plan: {
+//     morning: [],
+//     daytime: [],
+//     evening: [],
+//   }
+// }
+
 const dailyReducer = (state = initialState, action) => {
 
   switch (action.type) {
@@ -31,6 +46,17 @@ const dailyReducer = (state = initialState, action) => {
       return {
         ...state,
         date: action.date
+      }
+    }
+
+    case SET_PLAN: {
+      return {
+        ...state,
+        plan: {
+          morning: [ ...action.plan.morning],
+          daytime: [ ...action.plan.daytime],
+          evening: [ ...action.plan.evening],
+        }
       }
     }
 
@@ -61,20 +87,49 @@ const dailyReducer = (state = initialState, action) => {
       return state;
   }
 }
+//оставить
+export const setDate = (date) => {
+  return { type: SET_DATA , date}
+}
+
+const setUserPlan = (plan) => {
+  return { type: SET_PLAN , plan}
+}
+
+const editUserPlan = (period, state) => {
+  return { type: EDIT_PLAN , period, state}
+}
+
+//заменить
+export const addElemDaily = (elem, time) => {
+  return { type: ADD_ELEMENT_DAY, elem, time }
+}
 
 export const deleteElemDaily = (id, time) => {
   return { type: DELETE_ELEMENT_DAY, id, time }
 }
 
-export const setDatePlan = (date) => {
-  //загрузка плана по дате
-  return { type: SET_DATA , date}
+//
+export const getUserPlanThunk = (date) => async (dispatch) => {
+  const response = await calendar.getUserPlan(date);
+
+  if (response.status === 200) {
+    dispatch(setUserPlan(response.data.plan))
+  } else {
+    alert(response.data)
+  }
 }
 
-export const addElemDaily = (elem, time) => {
-  return { type: ADD_ELEMENT_DAY, elem, time }
+export const editUserPlanThunk = (date, period, state) => async (dispatch) => {
+  const response = await calendar.editUserPlan({date, period, state});
+
+  if (response.status === 200) {
+    dispatch(editUserPlan(period, state))
+  } else {
+    alert(response.data)
+  }
 }
 
-//установка данных из запроса
+
 
 export default dailyReducer;

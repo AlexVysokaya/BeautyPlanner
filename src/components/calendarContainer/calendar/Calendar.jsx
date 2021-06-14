@@ -2,13 +2,14 @@ import React from 'react';
 import { withRouter } from 'react-router';
 import style from './Calendar.module.css';
 
-let Calendar = ({ matrix, year, month, day, history, setDatePlan }) => {
+let Calendar = ({ matrix, year, month, day, history, setDate }) => {
 
   let switchingToDate = (day, month, year) => { // переход на Ежедневник
     // history.push(`/daily?year=${year}&month=${month}&day=${day}`)
     console.log('попал в переход на ежедневник');
     const newDate = new Date(year, month, day);
-    setDatePlan(newDate);
+    setDate(newDate); //изменить дату
+    //запрос плана по этой дате
     history.push(`/daily`);
   }
 
