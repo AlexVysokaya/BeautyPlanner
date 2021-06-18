@@ -1,21 +1,15 @@
 import { createBrowserHistory } from 'history';
 import React, { useEffect } from 'react';
 import { useState } from 'react';
-import { connect } from 'react-redux';
-import { addElemDaily } from '../../../redux/dailyReducer';
+import { stringDate } from '../../../function/stringDate';
 import Comeback from '../../button/comeback/comeback';
 import style from './AddNewDay.module.css';
 
 const CustomSelect = ({ id, options, onChange }) => {
   let arrOprions = [];
-
-  let map = (id, options) => {
-    for (let key in options) {
-      arrOprions.push(<option key={id + key} value={options[key].id}>{options[key].name}</option>)
-    }
+  for (let key in options) {
+    arrOprions.push(<option key={id + key} value={options[key].id}>{options[key].name}</option>)
   }
-
-  map(id, options)
 
   return (
     <select className={style.custom_select} id={id} onChange={onChange} className={style.form_field}>
@@ -25,7 +19,7 @@ const CustomSelect = ({ id, options, onChange }) => {
 }
 
 
-const AddNewDay = ({ cosmetics, addElemDaily }) => {
+const AddNewDay = ({ cosmetics, date, plan, editUserPlanThunk}) => {
 
   let history = createBrowserHistory();
 
@@ -39,8 +33,6 @@ const AddNewDay = ({ cosmetics, addElemDaily }) => {
     //устанавливаем во все списки по умолчанию первые элементы
     setCategories(cosmetics);
     setSections(cosmetics.body.list);
-    // setSections([{ id: 0, name: '-не выбрано-', items: [] }]);
-    // setElements(cosmetics.body.list.cleaning.list.length > 0 && cosmetics.body.list.cleaning.list);
     setElements([{ id: 0, name: '-не выбрано-', items: [] }]);
   }, [])
 
@@ -78,8 +70,11 @@ const AddNewDay = ({ cosmetics, addElemDaily }) => {
   const addElement = (elem) => {
 
     let time = history.location.pathname.split('/').pop();
-    debugger;
-    addElemDaily(elem, time);
+    let newPlan = [ ...plan[time]];
+    newPlan.push(elem);
+    const strDate = stringDate(date);
+    editUserPlanThunk(strDate, time, newPlan)
+
     history.back();
   }
 
@@ -104,7 +99,7 @@ const AddNewDay = ({ cosmetics, addElemDaily }) => {
 
     <div>
       <div className={style.wrapper_button}>
-        <button onClick={()=>{addElement(element)}}>Добавить</button>
+        <button onClick={() => { addElement(element) }}>Добавить</button>
       </div>
     </div>
 
@@ -112,10 +107,4 @@ const AddNewDay = ({ cosmetics, addElemDaily }) => {
 
 }
 
-const mapStateToProps = (state) => {
-  return {
-    cosmetics: state.cosmetics
-  }
-}
-
-export default connect(mapStateToProps, {addElemDaily})(AddNewDay);
+export default AddNewDay;

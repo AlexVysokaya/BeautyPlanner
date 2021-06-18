@@ -1,8 +1,8 @@
+import { stopSubmit } from 'redux-form';
 import { authorization } from '../api/api';
 import avatar from '../img/ava.jpg'
+import { getCosmBagThunk } from './cosmeticsReducer';
 
-// const SET_NAME = 'SET-NAME';
-// const SAVE_PHOTO = 'SAVE-PHOTO';
 const SET_AUTH = 'SET-AUTH';
 
 const initialState = {
@@ -39,17 +39,7 @@ const authReducer = (state = initialState, action) => {
 // }
 
 export const setAuth = (isAuth, login = null, id = null) => {
-  return {type: SET_AUTH, isAuth, login, id}
-}
-
-export const authLoginThunk = (login, password) => async (dispatch) => {
-  const response = await authorization.login(login, password);
-
-  if (response.status === 200) {
-    dispatch(setAuth(true, response.data.login, response.data.id ));
-  } else {
-    //должна быть валидация
-  }
+  return { type: SET_AUTH, isAuth, login, id }
 }
 
 export const authLogoutThunk = () => async (dispatch) => {
@@ -62,14 +52,40 @@ export const authLogoutThunk = () => async (dispatch) => {
   }
 }
 
+
+//не работает валидация на неверный логин или пароль
+export const authLoginThunk = (login, password) => async (dispatch) => {
+
+  console.log('зашли в санку')
+
+  const response = await authorization.login(login, password);
+
+  console.log('сделали запрос')
+
+  if (response.status === 200) {
+
+    console.log('ответ 200')
+
+    dispatch(setAuth(true, response.data.login, response.data.id));
+    dispatch(getCosmBagThunk());
+  } else {
+
+    console.log('ответ не 200')
+
+    dispatch(stopSubmit('login', { _error: 'не верный логин или пароль' }))
+  }
+}
+
+
+//не работает валидация насуществующего пользователя
 export const authRegistrationThunk = (login, password) => async (dispatch) => {
   const response = await authorization.registration(login, password);
 
   if (response.status === 200) {
-    // dispatch(setAuth(true, response.data.login, response.data.id ));
-    dispatch(setAuth(true));
+    dispatch(setAuth(true, response.data.login, response.data.id));
+    dispatch(getCosmBagThunk());
   } else {
-    //должна быть валидация
+    dispatch(stopSubmit('registration', { _error: 'логин уже используется' }))
   }
 }
 

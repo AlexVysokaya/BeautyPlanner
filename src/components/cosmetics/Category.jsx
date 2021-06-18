@@ -10,7 +10,6 @@ const Category = ({ list }) => {
   let location = history.location;
 
   let arrButton = [];
-
   for (let key in list) {
     arrButton.push(
       <NavLink to={`${location.pathname}/${key}`}>

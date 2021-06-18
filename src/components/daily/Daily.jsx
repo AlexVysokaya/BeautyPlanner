@@ -1,8 +1,6 @@
 import React from 'react';
-import { connect } from 'react-redux';
-import { Redirect} from 'react-router';
-import { addElemDaily, deleteElemDaily, setDate } from '../../redux/dailyReducer';
-import Download from '../Downloud/Downloud';
+import { getDateParametrs } from '../../function/getDateParametrs';
+import Download from '../requiredComponents/Downloud/Downloud';
 import style from './Daily.module.css';
 import DateComp from './Date';
 import Plan from './Plan';
@@ -11,7 +9,6 @@ import Plan from './Plan';
 class Daily extends React.Component {
 
   state = {
-    //todayDate: new Date(),
     selectedDate: this.props.date,
   }
 
@@ -34,11 +31,11 @@ class Daily extends React.Component {
   }
 
   changeDate = (n) => {
-    let year = this.state.selectedDate.getFullYear();
-    let month = this.state.selectedDate.getMonth();
-    let day = this.state.selectedDate.getDate() + n;
-    this.props.setDate( new Date(year, month, day));
-    //запрос плана на новую дату
+
+    const {year, month, day} = getDateParametrs(this.state.selectedDate);
+    const newData = `${day+n}.${ (month+1 > 10) ? month+1 : '0'+(month+1)}.${year}`;
+    this.props.setDate( new Date(year, month, day + n));
+    this.props.getUserPlanThunk(newData);
   }
 
   render() {
@@ -47,18 +44,10 @@ class Daily extends React.Component {
     }
 
     return <div className={style.wrapper}>
-      {(!this.props.isAuth) && <Redirect to='/login'/>}
       <DateComp date={this.state.selectedDate} changeDate = {this.changeDate}/>
-      <Plan plan = {this.props.plan} deleteElemDaily={this.props.deleteElemDaily} addElemDaily={this.props.addElemDaily}/>
+      <Plan plan = {this.props.plan} date={this.state.selectedDate} editUserPlanThunk={this.props.editUserPlanThunk}/>
     </div>
   }
 }
 
-const mapStateToProps = (state) => {
-  return {
-    date: state.daily.date,
-    plan: state.daily.plan,
-  }
-}
-
-export default connect(mapStateToProps, {deleteElemDaily, setDate})(Daily);
+export default Daily;

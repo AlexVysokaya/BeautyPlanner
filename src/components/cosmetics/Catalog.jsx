@@ -5,14 +5,15 @@ import { createBrowserHistory } from 'history';
 import AddElem from '../button/addElem/addElem';
 import Comeback from '../button/comeback/comeback';
 
-const Catalog = ({ list, deleteElemCosmetics }) => {
+const Catalog = ({ list, editCosmBagThunk }) => {
 
   let history = createBrowserHistory();
 
   let deleteElem = (id) => {
     let category = history.location.pathname.split('/');
     category.shift();
-    deleteElemCosmetics(id, category);
+    const newPlan = list.filter( elem => elem.id !== id );
+    editCosmBagThunk(category[1], category[2], newPlan);
   }
 
   return <div className={style.button_wrapper}>

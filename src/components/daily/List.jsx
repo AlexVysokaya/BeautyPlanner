@@ -1,19 +1,22 @@
 import { createBrowserHistory } from 'history';
 import React from 'react';
+import { stringDate } from '../../function/stringDate';
 import del from '../../img/delete.svg';
 import AddElem from '../button/addElem/addElem';
 import style from './Daily.module.css';
 
-const List = ({ list, time, deleteElemDaily}) => {
+const List = ({ date, list, time, editUserPlanThunk}) => {
 
   let deleteElem = (id, time) => {
-    deleteElemDaily(id, time)
+    const newPlan = list.filter(elem => elem.id !== id);
+    const strDate = stringDate(date);
+    editUserPlanThunk(strDate, time, newPlan);
   }
 
   let history = createBrowserHistory();
-
   return <div className={style.part_day}>
     {
+      (list.length === 0) ? <div className={`${style.element} ${style.no_plan}`}>Нет плана</div> :
       list.map((elem) => {
         return <div className={`${style.element}`}>
           <span>{elem.name}</span>

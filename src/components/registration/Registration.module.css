@@ -61,15 +61,8 @@
   font-weight: bold;
 }
 
-
-/* .button_back {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-} */
-
-/* .button_logo {
-  width: 15px;
-  height: 15px;
-  margin-right: 10px;
-} */
+.formSummaryError {
+  border: 2px solid red;
+  color: red;
+  font-size: small;
+}

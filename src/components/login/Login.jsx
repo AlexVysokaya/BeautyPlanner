@@ -1,22 +1,26 @@
 import React from 'react';
+import { connect } from 'react-redux';
 import { NavLink } from 'react-router-dom';
-import { Field, reduxForm } from 'redux-form';
-import { authorization, cosmeticBag } from '../../api/api';
+import { reduxForm } from 'redux-form';
+import { authLoginThunk } from '../../redux/authReducer';
+import { createField, Input } from '../requiredComponents/FormControl/FormControl';
 import style from './Login.module.css';
 
-const Form = ({ handleSubmit }) => {
+const Form = ({ handleSubmit, error }) => {
   return <form onSubmit={handleSubmit}>
     <div className={style.wrapper_field}>
-      <Field placeholder={'Логин'}
-        name={'login'}
-        component={'input'} />
+      {
+        createField('Логин', 'login', [], Input)
+      }
     </div>
     <div className={style.wrapper_field}>
-      <Field placeholder={'Пароль'}
-        name={'password'}
-        component={'input'}
-        type={'password'} />
+      {
+        createField('Пароль', 'password', [], Input, { type: 'password' })
+      }
     </div>
+    {
+      (error) && <div className={style.formSummaryError}>{error}</div>
+    }
     <div className={style.wrapper_button}>
       <button>Войти</button>
     </div>
@@ -27,31 +31,30 @@ const LogForm = reduxForm({
   form: 'login',
 })(Form);
 
-const Login = () => {
+const Login = ({ authLoginThunk }) => {
 
-  let onSubmit = async (formData) => {
+  let onSubmit = (formData) => {
     // запрос на авторизацию
     const login = formData.login;
     const password = formData.password;
-    // cosmeticBag.getBag().then(response => console.log(response))
-    let response = await authorization.login(login, password); //заменить на thunk
-    if (response.status === 200) {
-        console.log(response);
-        cosmeticBag.getBag().then(response => console.log(response)) //заменить на thunk
-    }
+    authLoginThunk(login, password);
   }
 
   return <div className={style.wrapper}>
-    <div className = {style.header}>
+    <div className={style.header}>
       <span>Авторизация</span>
     </div>
-    <div className = {style.wrapper_form}>
+    <div className={style.wrapper_form}>
       <LogForm onSubmit={onSubmit} />
     </div>
-    <div className = {style.registration}>
+    <div className={style.registration}>
       <NavLink to='/registration'>Зарегистрироваться</NavLink>
     </div>
   </div>
 }
 
-export default Login;
+const mapStateToProps = (state) => {
+  return {}
+}
+
+export default connect(mapStateToProps, { authLoginThunk })(Login);

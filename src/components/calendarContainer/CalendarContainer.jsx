@@ -5,7 +5,7 @@ import style from './CalendarContainer.module.css';
 import { generationMatrix } from '../../function/generationMatrix';
 import { getDateParametrs } from '../../function/getDateParametrs';
 import { Redirect } from 'react-router';
-import { setDate } from '../../redux/dailyReducer';
+import { getUserPlanThunk, setDate } from '../../redux/dailyReducer';
 
 class CalendarContainer extends React.Component {
 
@@ -52,7 +52,7 @@ class CalendarContainer extends React.Component {
             <div className={style.button_forward}></div>
           </div>
         </div>
-        <Calendar matrix={matrix} year={year} month={month} day={day} setDate={this.props.setDate}/>
+        <Calendar matrix={matrix} year={year} month={month} day={day} setDate={this.props.setDate} getUserPlanThunk={this.props.getUserPlanThunk}/>
       </div>
     )
   }
@@ -66,4 +66,4 @@ const mapStateToProps = (state) => {
   }
 }
 
-export default connect(mapStateToProps, {setDate})(CalendarContainer);
+export default connect(mapStateToProps, {setDate, getUserPlanThunk})(CalendarContainer);

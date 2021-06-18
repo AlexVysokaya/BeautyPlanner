@@ -4,11 +4,11 @@ import style from './Cosmetics.module.css';
 import { connect } from 'react-redux';
 import Catalog from './Catalog';
 import Category from './Category';
-import { addNew, deleteElemCosmetics } from '../../redux/cosmeticsReducer';
+import { addNew, deleteElemCosmetics, editCosmBagThunk } from '../../redux/cosmeticsReducer';
 import AddNewCosm from './addNewCosm/AddNewCosm';
 import { createBrowserHistory } from 'history';
 
-const Cosmetics = ({ state, addNew, deleteElemCosmetics, ...props }) => {
+const Cosmetics = ({ state, editCosmBagThunk, ...props }) => {
   let arrRoute = [];
   let history = createBrowserHistory();
 
@@ -21,10 +21,10 @@ const Cosmetics = ({ state, addNew, deleteElemCosmetics, ...props }) => {
         fillRoute(`${url}/${key}`, parcel[key].list);
       } else {
         arrRoute.push(
-          <Route exact path={`${url}/${key}`} render={() => <Catalog list={parcel[key].list} deleteElemCosmetics = {deleteElemCosmetics}/>} />
+          <Route exact path={`${url}/${key}`} render={() => <Catalog list={parcel[key].list} editCosmBagThunk={editCosmBagThunk} />} />
         )
         arrRoute.push(
-          <Route exact path={`${url}/${key}/new`} render={() => <AddNewCosm history={history} addNew = {addNew}/>} />
+          <Route exact path={`${url}/${key}/new`} render={() => <AddNewCosm history={history} editCosmBagThunk={editCosmBagThunk} state = {state}/>} />
         )
       }
     }
@@ -45,4 +45,4 @@ const mapStateToProps = (state) => {
   }
 }
 
-export default connect(mapStateToProps, { addNew, deleteElemCosmetics })(Cosmetics);
+export default connect(mapStateToProps, {editCosmBagThunk})(Cosmetics);

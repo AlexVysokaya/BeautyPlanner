@@ -52,3 +52,9 @@
 .registration {
   margin-top: 20px;
 }
+
+.formSummaryError {
+  border: 2px solid red;
+  color: red;
+  font-size: small;
+}
