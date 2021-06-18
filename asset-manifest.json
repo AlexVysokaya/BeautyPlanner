@@ -1,0 +1,32 @@
+{
+  "files": {
+    "main.css": "/BeautyPlanner/static/css/main.8e8d4115.chunk.css",
+    "main.js": "/BeautyPlanner/static/js/main.711e2080.chunk.js",
+    "main.js.map": "/BeautyPlanner/static/js/main.711e2080.chunk.js.map",
+    "runtime-main.js": "/BeautyPlanner/static/js/runtime-main.7a401659.js",
+    "runtime-main.js.map": "/BeautyPlanner/static/js/runtime-main.7a401659.js.map",
+    "static/js/2.bbccb5c4.chunk.js": "/BeautyPlanner/static/js/2.bbccb5c4.chunk.js",
+    "static/js/2.bbccb5c4.chunk.js.map": "/BeautyPlanner/static/js/2.bbccb5c4.chunk.js.map",
+    "static/js/3.bb823122.chunk.js": "/BeautyPlanner/static/js/3.bb823122.chunk.js",
+    "static/js/3.bb823122.chunk.js.map": "/BeautyPlanner/static/js/3.bb823122.chunk.js.map",
+    "index.html": "/BeautyPlanner/index.html",
+    "static/css/main.8e8d4115.chunk.css.map": "/BeautyPlanner/static/css/main.8e8d4115.chunk.css.map",
+    "static/js/2.bbccb5c4.chunk.js.LICENSE.txt": "/BeautyPlanner/static/js/2.bbccb5c4.chunk.js.LICENSE.txt",
+    "static/media/ava.ce26c905.jpg": "/BeautyPlanner/static/media/ava.ce26c905.jpg",
+    "static/media/avatar.4c919b14.png": "/BeautyPlanner/static/media/avatar.4c919b14.png",
+    "static/media/back.42e2124a.svg": "/BeautyPlanner/static/media/back.42e2124a.svg",
+    "static/media/calend.9f6e0f78.svg": "/BeautyPlanner/static/media/calend.9f6e0f78.svg",
+    "static/media/cosmetics.297f71ca.svg": "/BeautyPlanner/static/media/cosmetics.297f71ca.svg",
+    "static/media/daily.6caa623b.svg": "/BeautyPlanner/static/media/daily.6caa623b.svg",
+    "static/media/delete.35c3edaa.svg": "/BeautyPlanner/static/media/delete.35c3edaa.svg",
+    "static/media/loading2.5e1a9ed6.gif": "/BeautyPlanner/static/media/loading2.5e1a9ed6.gif",
+    "static/media/pencil.d3688b8e.svg": "/BeautyPlanner/static/media/pencil.d3688b8e.svg",
+    "static/media/profile.fd6a59a5.svg": "/BeautyPlanner/static/media/profile.fd6a59a5.svg"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.7a401659.js",
+    "static/js/2.bbccb5c4.chunk.js",
+    "static/css/main.8e8d4115.chunk.css",
+    "static/js/main.711e2080.chunk.js"
+  ]
+}
