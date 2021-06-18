@@ -1,8 +1,8 @@
 {
   "files": {
     "main.css": "/BeautyPlanner/static/css/main.8e8d4115.chunk.css",
-    "main.js": "/BeautyPlanner/static/js/main.711e2080.chunk.js",
-    "main.js.map": "/BeautyPlanner/static/js/main.711e2080.chunk.js.map",
+    "main.js": "/BeautyPlanner/static/js/main.ca4cac19.chunk.js",
+    "main.js.map": "/BeautyPlanner/static/js/main.ca4cac19.chunk.js.map",
     "runtime-main.js": "/BeautyPlanner/static/js/runtime-main.7a401659.js",
     "runtime-main.js.map": "/BeautyPlanner/static/js/runtime-main.7a401659.js.map",
     "static/js/2.bbccb5c4.chunk.js": "/BeautyPlanner/static/js/2.bbccb5c4.chunk.js",
@@ -27,6 +27,6 @@
     "static/js/runtime-main.7a401659.js",
     "static/js/2.bbccb5c4.chunk.js",
     "static/css/main.8e8d4115.chunk.css",
-    "static/js/main.711e2080.chunk.js"
+    "static/js/main.ca4cac19.chunk.js"
   ]
 }
